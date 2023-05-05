@@ -1,48 +1,22 @@
 #!/usr/bin/env bash
-# sets up my web servers for the deployment of web_static
+# Install Nginx if its not already installed.
+#+ Creates necessery directories if it does not exist
+#++ Creates an html file and creates a symbolic link to test the folder.
+#++ Give ownership to the data folder to ubuntu user and group.
+#++ Update Nginx configuration and it restarts it.
 
-echo -e "\e[1;32m START\e[0m"
+if [ ! -x "$(command -v nginx)" ]; then
+  sudo apt-get update
+  sudo apt-get install -y nginx
+fi
 
-#--Updating the packages
-sudo apt-get -y update
-sudo apt-get -y install nginx
-echo -e "\e[1;32m Packages updated\e[0m"
-echo
-
-#--configure firewall
-sudo ufw allow 'Nginx HTTP'
-echo -e "\e[1;32m Allow incomming NGINX HTTP connections\e[0m"
-echo
-
-#--created the dir
-sudo mkdir -p /data/web_static/releases/test /data/web_static/shared
-echo -e "\e[1;32m directories created"
-echo
-
-#--adds test string
-echo "<h1>Welcome to www.beta-scribbles.tech</h1>" > /data/web_static/releases/test/index.html
-echo -e "\e[1;32m Test string added\e[0m"
-echo
-
-#--prevent overwrite
-if [ -d "/data/web_static/current" ];
-then
-    echo "path /data/web_static/current exists"
-    sudo rm -rf /data/web_static/current;
-fi;
-echo -e "\e[1;32m prevent overwrite\e[0m"
-echo
-
-#--create symbolic link
+sudo mkdir -p /data/web_static/{releases,test,shared}
+sudo echo "Hello, World!" | sudo tee /data/web_static/releases/test/index.html
 sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
-sudo chown -hR ubuntu:ubuntu /data
 
-sudo sed -i '38i\\tlocation /hbnb_static/ {\n\t\talias /data/web_static/current/;\n\t}\n' /etc/nginx/sites-available/default
+sudo chown -R ubuntu:ubuntu /data/
+sudo sed -i 's|^\tserver {|&\n\tlocation /hbnb_static/ {\n\t\talias /data/web_static/current/;\n\t}\n|' /etc/nginx/sites-available/default
 
-sudo ln -sf '/etc/nginx/sites-available/default' '/etc/nginx/sites-enabled/default'
-echo -e "\e[1;32m Symbolic link created\e[0m"
-echo
-
-#--restart NGINX
 sudo service nginx restart
-echo -e "\e[1;32m restart NGINX\e[0m"
+
+exit 0
