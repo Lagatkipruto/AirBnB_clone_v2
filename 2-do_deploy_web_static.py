@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 '''
-fabric script to distribute an archive to web servers
-----NEEDS TO REVISIT SCRIPT
+A fabric script to distribute an archive to web servers
 '''
 
 import os
@@ -9,12 +8,12 @@ from datetime import datetime
 from fabric.api import env, local, put, run, runs_once
 
 
-env.hosts = ['34.138.32.248', '3.226.74.205']
+env.hosts = ['54.89.194.128', '54.209.119.141'] 
 
 
 def do_deploy(archive_path):
     """Distributes an archive to a web server.
-    Args:
+    Arguments:
         archive_path (str): The path of the archive to distribute.
     Returns:
         If the file doesn't exist at archive_path or an error occurs - False.
@@ -42,7 +41,7 @@ def do_deploy(archive_path):
 
 
 def do_deploy(archive_path):
-    """Deploys the static files to the host servers.
+    """It deploys the static files to the host servers.
     Args:
         archive_path (str): The path to the archived static files.
     """
