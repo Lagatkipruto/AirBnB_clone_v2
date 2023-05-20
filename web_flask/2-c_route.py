@@ -1,3 +1,10 @@
+#!/usr/bin/env python3
+"""A  script that starts a Flask web application
+Routes: /: display "Hello HBNB!"
+/hbnb: display "HBNB"
+/c/<text>: display "C" followed by the value of the text variable
+listening on 0.0.0.0:5000
+"""
 from flask import Flask
 
 app = Flask(__name__)
