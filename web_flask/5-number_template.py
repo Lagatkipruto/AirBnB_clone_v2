@@ -10,7 +10,7 @@ Routes:
     /number/<n> Display "n" is a number only if n is an integer
     /number_template/<n> Display a HTML page only if n is an integer
 """
-from flask import Flask, escape
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
