@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """A  script that starts a Flask web application
 Routes: /: display "Hello HBNB!"
 /hbnb: display "HBNB"
