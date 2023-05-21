@@ -22,7 +22,7 @@ class FileStorage:
     def new(self, obj):
         """Adds new object to storage dictionary"""
         self.__objects.update(
-            {obj.to_dict()['__class__'] + '.' + obj.id: obj}
+                {obj.to_dict()['__class__'] + '.' + obj.id: obj}
             )
 
     def save(self):
@@ -59,7 +59,7 @@ class FileStorage:
             pass
 
     def delete(self, obj=None):
-        ''' deletes the object obj from the attribute
+''' deletes the object obj from the attribute
             __objects if it's inside it
         '''
         if obj is None:
