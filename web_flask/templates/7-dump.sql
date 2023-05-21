@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: hbnb_dev_db
 -- ------------------------------------------------------
--- Server version   5.7.8-rc
+-- Server version	5.7.8-rc
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -36,14 +36,14 @@ DROP TABLE IF EXISTS `cities`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cities` (
-      `id` varchar(60) NOT NULL,
-      `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-      `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-      `name` varchar(128) NOT NULL,
-      `state_id` varchar(60) NOT NULL,
-      PRIMARY KEY (`id`),
-      KEY `state_id` (`state_id`),
-      CONSTRAINT `cities_ibfk_1` FOREIGN KEY (`state_id`) REFERENCES `states` (`id`)
+  `id` varchar(60) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `name` varchar(128) NOT NULL,
+  `state_id` varchar(60) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `state_id` (`state_id`),
+  CONSTRAINT `cities_ibfk_1` FOREIGN KEY (`state_id`) REFERENCES `states` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -65,11 +65,11 @@ DROP TABLE IF EXISTS `states`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `states` (
-      `id` varchar(60) NOT NULL,
-      `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-      `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-      `name` varchar(128) NOT NULL,
-      PRIMARY KEY (`id`)
+  `id` varchar(60) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `name` varchar(128) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
